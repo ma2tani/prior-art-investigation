@@ -7,7 +7,7 @@
 cd /path/to/prior-art-investigation
 python3 -m venv mcp-env
 source mcp-env/bin/activate
-pip install -r mcp/requirements.txt
+# No pip install needed - server_lite.py uses standard library only!
 ```
 
 ### Step 2: Add to Claude Desktop config
@@ -16,7 +16,7 @@ pip install -r mcp/requirements.txt
 
 **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
-**Example config**:
+**Example config** (use `server_lite.py` — no FastMCP required):
 
 ```json
 {
@@ -24,11 +24,8 @@ pip install -r mcp/requirements.txt
     "prior-art-investigation": {
       "command": "python3",
       "args": [
-        "/absolute/path/to/prior-art-investigation/mcp/server.py"
-      ],
-      "env": {
-        "PYTHONPATH": "/absolute/path/to/prior-art-investigation"
-      }
+        "/absolute/path/to/prior-art-investigation/mcp/server_lite.py"
+      ]
     }
   }
 }

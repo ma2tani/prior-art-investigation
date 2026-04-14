@@ -1,2 +1,7 @@
 # MCP Server dependencies
-mcp>=0.1.0
+# Note: server_lite.py uses only Python standard library
+# No external dependencies required!
+
+# Optional: FastMCP for advanced features (future)
+# mcp>=0.1.0
+
