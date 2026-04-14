@@ -59,11 +59,11 @@ It returns:
 | 2024 | Craft et al. "LLaMA-Factory" | Production-ready distillation pipelines |
 
 **OSS Evaluation Matrix**:
-| Tool | Distillation Type | Reasoning Support | Ops Complexity | Best For |
-|------|-----|---|---|---|
-| Hugging Face transformers | Layer-wise | ❌ No | Low | Standard BERT-scale models |
-| LLaMA-Factory | Full pipeline | ✅ Yes | Medium | LLM distillation end-to-end |
-| Distil training code (papers) | Custom | ❌ No | High | Research, custom architectures |
+| Tool | License | Maintainer | Updated | Data Prep | Best For | Source |
+|------|---------|-----------|---------|-----------|----------|--------|
+| Hugging Face transformers | Apache-2.0 | Hugging Face (org) | Active (weekly) | Low | Standard BERT-scale distillation | [GitHub](https://github.com/huggingface/transformers) |
+| LLaMA-Factory | Apache-2.0 | HKUST / Tsinghua (academic org) | Active (monthly) | Medium | LLM distillation end-to-end | [GitHub](https://github.com/hiyouga/LLaMA-Factory) |
+| Paper training code | Varies | Individual researchers | Stale | High | Research / custom architectures | [arXiv](https://arxiv.org/abs/2212.10071) |
 
 **Key Risks**:
 - **Teacher bias**: Small model inherits teacher's errors + biases

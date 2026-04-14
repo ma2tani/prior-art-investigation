@@ -48,7 +48,16 @@ PROMPT_FULL = """
 - What approaches / algorithms / architectures exist?
 
 ## Q4: OSS Ecosystem
-- Which open-source projects solve this? List with pros/cons.
+For each relevant OSS project (3-5 top options), provide a table with these columns:
+- **Tool** — project name
+- **License** — MIT, Apache-2.0, GPL, etc. (note commercial-use restrictions if any)
+- **Maintainer** — organization (Meta / Google / HF / academic) or individual; signals continuity risk
+- **Updated** — actively maintained or stale? (last release cadence)
+- **Data Prep Effort** — how much setup / data wrangling before it's usable (Low / Medium / High)
+- **Best For** — one-line fit description
+- **Source** — GitHub URL or paper link (mandatory — always include)
+
+Note: include additional domain-specific columns if relevant (e.g., cloud cost, language support, inference latency).
 
 ## Q5: Architecture Choice
 - Which OSS or approach to build on and why?
