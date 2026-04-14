@@ -1,130 +1,130 @@
-# OSS評価ルール
+# OSS Evaluation Rules
 
-> **スコープ**: このルールは、先行技術調査（Phase A/B）全体を通じたOSS評価に適用される。
-> **スタンドアロン対応**: Kiro SDD不要。任意の開発ワークフローで使用可能。
+> **Scope**: These rules apply throughout the prior art investigation (Phase A/B) for comprehensive OSS evaluation.
+> **Standalone Capable**: No Kiro SDD required. Usable in any development workflow.
 
 ---
 
-## Phase A: 概念レベルの調査
+## Phase A: Concept-Level Investigation
 
-### A-0: 調査開始の7つの問い
+### A-0: Seven Questions to Begin
 
-設計を開始する前に以下の問いに答える。全問への回答がなければ設計に進んではならない。
+Answer the following questions before starting design. Do not proceed to design without answering all questions.
 
-| # | 問い |
-|---|-----|
-| Q1 | この問題の枠組みは正しいか？解くべき問題を解いているか？ |
-| Q2 | なぜこのアプローチは既に普及していないのか？ |
-| Q3 | このアプローチで失敗した人は何人いるか？どのように失敗したか？ |
-| Q4 | このドメインを最も深く考えている人は誰か？その言葉はどこにあるか？ |
-| Q5 | 一次資料（論文・RFC・コミットログ・Issue）を読んだか？ |
-| Q6 | これが最悪の形で失敗するとしたら何が原因か？ |
-| Q7 | 概念名が分かった。これが設計をどう変えるか？ |
+| # | Question |
+|---|----------|
+| Q1 | Is this problem framework correct? Are you solving the right problem? |
+| Q2 | Why hasn't this approach already become mainstream? |
+| Q3 | How many people have failed with this approach? How did they fail? |
+| Q4 | Who thinks most deeply about this domain? Where are their words written? |
+| Q5 | Have you read primary sources (papers, RFCs, commit logs, Issues)? |
+| Q6 | If this failed in the worst possible way, what would be the cause? |
+| Q7 | Now that you've named the concept, how does it change your design? |
 
-### A-1: 命名規則
+### A-1: Naming Convention
 
-- **概念名の特定**: 既知のアルゴリズム名・パターン名・技術名を特定する
-- **複数の参照名の確認**: 同じ概念が複数名を持つことがある（例: "KD" vs "Knowledge Distillation"）
-- **発表年の記録**: 概念の将来的な陳腐化リスクを測るために必要
-- **成熟度評価**: Production Ready / Experimental / Theoretical / Deprecated で分類
+- **Concept Identification**: Identify known algorithm names, pattern names, or technology names
+- **Multiple Reference Names**: The same concept may have multiple names (e.g., "KD" vs "Knowledge Distillation")
+- **Publication Year Recording**: Necessary to measure future obsolescence risks
+- **Maturity Assessment**: Classify as Production Ready / Experimental / Theoretical / Deprecated
 
-### A-2: ドメイン別の調査範囲
+### A-2: Domain-Specific Investigation Scope
 
-| ドメイン | 調査すべき概念の例 |
-|--------|----------------|
+| Domain | Concepts to Investigate |
+|--------|------------------------|
 | ML / AI | Knowledge Distillation・LoRA・RAG・Active Learning・RLHF・Vector Stores |
-| Webバックエンド | CQRS・Event Sourcing・Saga・Circuit Breaker・BFF・Hexagonal Architecture |
-| Webフロントエンド | Island Architecture・Optimistic UI・PRPLパターン・Micro Frontends |
-| モバイル | Offline-first・MVVM/MVI・単方向データフロー・Composable Navigation |
-| インフラ | Blue-Green Deploy・カナリアリリース・GitOps・Cell-based Architecture・eBPF |
-| データプラットフォーム | Medallion Architecture・Data Mesh・Lambda/Kappa・CDC・dbt Metrics |
-| セキュリティ | RBAC/ABAC・Zero Trust・PKCE・CSP・SSRF Protection |
+| Web Backend | CQRS・Event Sourcing・Saga・Circuit Breaker・BFF・Hexagonal Architecture |
+| Web Frontend | Island Architecture・Optimistic UI・PRPL Pattern・Micro Frontends |
+| Mobile | Offline-first・MVVM/MVI・Unidirectional Data Flow・Composable Navigation |
+| Infrastructure | Blue-Green Deploy・Canary Release・GitOps・Cell-based Architecture・eBPF |
+| Data Platform | Medallion Architecture・Data Mesh・Lambda/Kappa・CDC・dbt Metrics |
+| Security | RBAC/ABAC・Zero Trust・PKCE・CSP・SSRF Protection |
 
-### A-3: 調査リソース
+### A-3: Investigation Resources
 
-| カテゴリ | URL | 用途 |
-|--------|-----|-----|
-| ML プレプリント | https://arxiv.org/list/cs.LG/recent | 最新MLアルゴリズム |
-| 実装付き論文 | https://paperswithcode.com/ | 論文 + OSS対応表 |
-| 論文検索 | https://www.semanticscholar.org/ | 引用数・関連研究 |
-| 設計パターン | https://martinfowler.com/ | バックエンド・DDD・マイクロサービス |
-| マイクロサービス | https://microservices.io/ | パターンライブラリ |
-| 業界レーダー | https://www.thoughtworks.com/radar | Adopt/Trial/Assess/Hold分類 |
-| クラウドネイティブ | https://landscape.cncf.io/ | インフラパターン |
-| フロントエンド | https://web.dev/ | ブラウザ・パフォーマンスパターン |
-| セキュリティ | https://owasp.org/ | 脆弱性・セキュリティ標準 |
+| Category | URL | Use Case |
+|----------|-----|----------|
+| ML Preprints | https://arxiv.org/list/cs.LG/recent | Latest ML algorithms |
+| Papers with Code | https://paperswithcode.com/ | Papers + OSS mapping |
+| Paper Search | https://www.semanticscholar.org/ | Citation count & related work |
+| Design Patterns | https://martinfowler.com/ | Backend・DDD・Microservices |
+| Microservices | https://microservices.io/ | Pattern library |
+| Industry Radar | https://www.thoughtworks.com/radar | Adopt/Trial/Assess/Hold classification |
+| Cloud Native | https://landscape.cncf.io/ | Infrastructure patterns |
+| Frontend | https://web.dev/ | Browser・Performance patterns |
+| Security | https://owasp.org/ | Vulnerabilities・Security standards |
 
-### A-4: 概念結果の記録
+### A-4: Recording Concept Results
 
-`templates/research.md`の「Named Concept / 先行技術」セクションに記録する。
+Record findings in `templates/research.md` under the "Named Concept / Prior Art" section.
 
-**必須項目**:
-- 概念名（発見した場合）または「概念名なし — 新規の組み合わせ」（未発見の場合）
-- 一次資料のURL
-- 発表年と成熟度
-- Q7の回答: この概念名が設計を変える理由
-
----
-
-## Phase B: OSSレベルの評価
-
-### B-1: 調査順序（厳守）
-
-1. プロジェクト内部の再利用可能モジュールを最初に確認する
-2. エコシステムの公式パッケージを確認する（npm・PyPI・crates.io・Hex）
-3. 業界標準OSSを確認する
-4. 参照実装のみをレビューする（採用なし）
-
-### B-2: ライセンスTier分類
-
-全てのOSS候補をSPDX識別子でライセンスを記録し、Tierを分類する。
-
-| Tier | SPDX ライセンス例 | 判断 |
-|------|----------------|------|
-| **Tier 1** ✅ 採用可 | MIT・BSD-2-Clause・BSD-3-Clause・Apache-2.0・ISC・0BSD | オーバーライドなしで採用可 |
-| **Tier 2** ⚠️ 条件付き | LGPL-2.1-only・LGPL-3.0-only・MPL-2.0・EPL-2.0・CDDL-1.0 | 利用形態（ライブラリ/アプリ）を要確認 |
-| **Tier 3** 🔴 法的レビュー必要 | GPL-2.0-only・GPL-3.0-only・AGPL-3.0-only・OSL-3.0 | 法務クリアなしで採用禁止 |
-| **Tier 4** ❌ 採用禁止 | SSPL-1.0・Commons Clause・BSL-1.1・CC-BY-NC-*・独自 | 採用禁止 |
-
-**ライセンスが見つからない場合**: そのOSSを採用してはならない。
-
-### B-3: OSSヘルス評価
-
-ライセンスがTier 1またはTier 2であっても以下を評価する:
-- **最終コミット**: 12ヶ月以内が必須（2年以上でフラグ）
-- **コントリビュータ数**: 1人のプロジェクトはリスク（2人以上を推奨）
-- **オープンIssue数**: 機能リクエストのみを多数抱えるより、バグIssueが少ない方が望ましい
-- **後継プロジェクト**: アーカイブ済みの場合、後継プロジェクトに乗り換えを検討
-
-### B-4: Build vs Use の判断マトリクス
-
-| 判断基準 | スコア +1（既存採用）| スコア −1（自前実装）|
-|--------|-------------------|------------------|
-| 機能適合度 | 要件の80%以上をカバー | 60%未満またはフォーク必要 |
-| ライセンス | Tier 1 | Tier 3以上 |
-| 最終コミット | 12ヶ月以内 | 2年以上前 |
-| 戦略的差別化 | 非コア（ユーティリティ/インフラ） | プロダクトのコアバリュー |
-| 自前実装量 | 200行超 | 50行以下 |
-
-**合計スコア ≥ +2 → 既存OSS採用を推奨**  
-**合計スコア ≤ 0 → 自前実装を推奨（調査結果で理由を明記）**
+**Required fields**:
+- Concept name (if found) or "No concept name — new combination of [X] and [Y]" (if not found)
+- Primary source URL
+- Publication year and maturity
+- Q7 answer: Why this concept name changes your design
 
 ---
 
-## 完了チェックリスト
+## Phase B: OSS-Level Evaluation
 
-**Phase A（概念レベル）**
-- [ ] Q1〜Q7の全問に答えた（設計フェーズ）またはQ1+Q6のみ（要件フェーズ）
-- [ ] 概念名を検索した（結果: 発見 / 未発見）
-- [ ] 発見した場合: 名前・URL・発表年・成熟度をresearch.mdに記録した
-- [ ] 未発見の場合: 「概念名なし — 新規の組み合わせ」と根拠を記録した
-- [ ] ThoughtWorks Tech Radarの分類を確認した
+### B-1: Investigation Order (Mandatory)
 
-**Phase B（OSSレベル）**
-- [ ] プロジェクト内部の再利用を確認した
-- [ ] 1〜3件のOSS候補を評価した
-- [ ] 全候補をSPDX License Tierで分類した
-- [ ] OSSヘルスを評価した（最終コミット・コントリビュータ数）
-- [ ] Build vs Useマトリクスを適用した
-- [ ] URLを含む調査結果をresearch.mdに記録した
-- [ ] 採用判断（採用 / 自前実装 / 該当なし）を設計ドキュメントに反映した
+1. Check for reusable modules within the project first
+2. Check official ecosystem packages (npm・PyPI・crates.io・Hex)
+3. Check industry-standard OSS
+4. Review reference implementations only (no adoption yet)
+
+### B-2: License Tier Classification
+
+Classify all OSS candidates by SPDX identifier into Tiers.
+
+| Tier | SPDX License Examples | Decision |
+|------|----------------------|----------|
+| **Tier 1** ✅ Adoptable | MIT・BSD-2-Clause・BSD-3-Clause・Apache-2.0・ISC・0BSD | Can adopt without override |
+| **Tier 2** ⚠️ Conditional | LGPL-2.1-only・LGPL-3.0-only・MPL-2.0・EPL-2.0・CDDL-1.0 | Usage model must be verified |
+| **Tier 3** 🔴 Legal Review Required | GPL-2.0-only・GPL-3.0-only・AGPL-3.0-only・OSL-3.0 | Adoption prohibited without legal approval |
+| **Tier 4** ❌ No Adoption | SSPL-1.0・Commons Clause・BSL-1.1・CC-BY-NC-*・Proprietary | Prohibited from adoption |
+
+**If license is not found**: Do not adopt that OSS.
+
+### B-3: OSS Health Evaluation
+
+Even if license is Tier 1 or 2, evaluate:
+- **Last Commit**: Must be within 12 months (flag if 2+ years old)
+- **Contributor Count**: Single-person projects are risky (2+ recommended)
+- **Open Issues**: Fewer bug issues better than many feature requests
+- **Successor Project**: If archived, consider switching to successor
+
+### B-4: Build vs Use Decision Matrix
+
+| Decision Criteria | Score +1 (Adopt Existing) | Score −1 (Self-Implement) |
+|------------------|---------------------------|--------------------------|
+| Feature Fit | Covers 80%+ of requirements | Covers <60% or requires fork |
+| License | Tier 1 | Tier 3+ |
+| Last Commit | within 12 months | 2+ years old |
+| Strategic Differentiation | Non-core (utility/infrastructure) | Product core value |
+| Self-Implementation Effort | >200 lines | <50 lines |
+
+**Total Score ≥ +2 → Recommend adopting existing OSS**  
+**Total Score ≤ 0 → Recommend self-implementation (document reasoning)**
+
+---
+
+## Completion Checklist
+
+**Phase A (Concept-Level)**
+- [ ] Answered all Q1-Q7 (design phase) or Q1+Q6 only (requirements phase)
+- [ ] Searched for concept name (Result: Found / Not Found)
+- [ ] If found: Recorded name・URL・publication year・maturity in research.md
+- [ ] If not found: Recorded "No concept name — new combination of [X] and [Y]" with reasoning
+- [ ] Checked ThoughtWorks Tech Radar classification
+
+**Phase B (OSS-Level)**
+- [ ] Checked for reusable modules within project
+- [ ] Evaluated 1-3 OSS candidates
+- [ ] Classified all candidates by SPDX License Tier
+- [ ] Evaluated OSS health (last commit, contributor count)
+- [ ] Applied Build vs Use matrix
+- [ ] Recorded investigation results including URLs in research.md
+- [ ] Reflected adoption decision (adopt/self-implement/N/A) in design document

@@ -1,95 +1,95 @@
-# 先行技術・既発明調査テンプレート
+# Prior Art & Concept Investigation Template
 
-> **使い方**: このファイルを仕様書（`research.md`）またはプロジェクトのドキュメント置き場にコピーして使用する。  
-> ブラケット `[…]` の部分を実際の調査結果で置き換える。調査で未発見の項目は「該当なし」と記録する。
-
----
-
-## Named Concept / 先行技術
-
-### 概念テーブル
-
-| 項目 | 内容 |
-|------|------|
-| **概念名** | `[概念名]` または「概念名なし — `[X]` と `[Y]` の新規組み合わせ」 |
-| **発表年 / 出典** | `[YYYY年]` / `[著者名, 発表媒体]` |
-| **成熟度** | `[ ]` Production Ready `[ ]` Experimental `[ ]` Theoretical `[ ]` Deprecated |
-| **論文 / 仕様URL** | `[https://...]` |
-| **参照実装URL** | `[https://...]` または「該当なし」 |
-| **設計への影響** | `[Q7の回答: この概念名が設計にどう影響するか]` |
-| **自前実装が必要な差別化部分** | `[既存概念を採用しない・変形する箇所の説明]` または「差別化なし — そのまま適用」 |
+> **How to use**: Copy this file as a research log (`research.md`) or into your project's documentation directory.  
+> Replace bracketed `[…]` sections with actual investigation results. Mark items not found in investigation as "N/A".
 
 ---
 
-## OSS候補テーブル
+## Named Concept / Prior Art
 
-| 候補 | License(SPDX) | 最終コミット | Stars / DL | 採用判断 | 参照URL |
-|-----|--------------|------------|-----------|---------|---------|
-| `[パッケージ名A]` | `[MIT]` | `[YYYY-MM]` | `[XXk]` | ✅ 採用 / ⚠️ 要確認 / ❌ 非採用 | `[https://...]` |
-| `[パッケージ名B]` | `[Apache-2.0]` | `[YYYY-MM]` | `[XXk]` | ✅ 採用 / ⚠️ 要確認 / ❌ 非採用 | `[https://...]` |
-| `[パッケージ名C]` | `[GPL-3.0-only]` | `[YYYY-MM]` | `[XXk]` | ❌ Tier 3 — 採用禁止 | `[https://...]` |
+### Concept Table
 
----
-
-## 調査ステップ
-
-### Step 1: 概念の命名（Phase A）
-
-調査した問いとその回答:
-
-**Q1 (第一原理)**: `[問題の枠組みは正しいか？]`
-
-> `[回答]`
-
-**Q2 (帰無仮説)**: `[なぜこのアプローチは既に普及していないのか？]`
-
-> `[回答]`
-
-**Q3 (失敗例から始める)**: `[このアプローチで失敗した人は何人いるか？]`
-
-> `[回答]`
-
-**Q4 (専門家を見つける)**: `[このドメインの専門家は誰か？]`
-
-> `[回答]`
-
-**Q5 (一次資料を読む)**: `[論文・RFC・コミットログ・Issueを読んだか？]`
-
-> `[回答]`
-
-**Q6 (反転)**: `[これが最悪の形で失敗するとしたら？]`
-
-> `[回答]`
-
-**Q7 (So What)**: `[概念名が分かった。これが設計をどう変えるか？]`
-
-> `[回答]`
+| Field | Content |
+|-------|---------|
+| **Concept Name** | `[Concept Name]` OR "No concept name — new combination of `[X]` and `[Y]`" |
+| **Publication Year / Source** | `[YYYY year]` / `[Author name, publication venue]` |
+| **Maturity** | `[ ]` Production Ready `[ ]` Experimental `[ ]` Theoretical `[ ]` Deprecated |
+| **Paper / Specification URL** | `[https://...]` |
+| **Reference Implementation URL** | `[https://...]` or "N/A" |
+| **Impact on Design** | `[Q7 answer: How does this concept name change your design?]` |
+| **Differentiating Self-Implementation** | `[Explanation of where existing concept is not adopted or modified]` OR "N/A — direct application" |
 
 ---
 
-### Step 2: OSSの探索（Phase B）
+## OSS Candidates Table
 
-**調査した候補**:
-
-1. `[候補名A]`
-   - ライセンス: `[SPDX識別子]` → Tier `[1/2/3/4]`
-   - 最終コミット: `[YYYY-MM-DD]`
-   - 機能適合度: `[XX]`%
-   - 判断: `[採用理由 / 非採用理由]`
-
-2. `[候補名B]`
-   - ライセンス: `[SPDX識別子]` → Tier `[1/2/3/4]`
-   - 最終コミット: `[YYYY-MM-DD]`
-   - 機能適合度: `[XX]`%
-   - 判断: `[採用理由 / 非採用理由]`
+| Candidate | License (SPDX) | Last Commit | Stars / Downloads | Adoption Decision | Reference URL |
+|-----------|----------------|-------------|-------------------|-------------------|----------------|
+| `[Package Name A]` | `[MIT]` | `[YYYY-MM]` | `[XXk]` | ✅ Adopt / ⚠️ Review / ❌ Reject | `[https://...]` |
+| `[Package Name B]` | `[Apache-2.0]` | `[YYYY-MM]` | `[XXk]` | ✅ Adopt / ⚠️ Review / ❌ Reject | `[https://...]` |
+| `[Package Name C]` | `[GPL-3.0-only]` | `[YYYY-MM]` | `[XXk]` | ❌ Tier 3 — Adoption Prohibited | `[https://...]` |
 
 ---
 
-### Step 3: 最終判断
+## Investigation Steps
 
-| 判断 | 内容 |
-|------|------|
-| **採用判断** | `[ ]` 既存OSS採用  `[ ]` 自前実装  `[ ]` 既存OSS + 自前実装の組み合わせ |
-| **採用するOSS** | `[パッケージ名]` バージョン `[x.y.z]` または「なし」 |
-| **自前実装が必要な理由** | `[理由]` または「既存OSSで全要件をカバー」 |
-| **残るリスク** | `[潜在的な問題]` または「なし」 |
+### Step 1: Concept Naming (Phase A)
+
+Questions and answers from investigation:
+
+**Q1 (First Principles)**: `[Is the problem framework correct?]`
+
+> `[Answer]`
+
+**Q2 (Null Hypothesis)**: `[Why hasn't this approach already become mainstream?]`
+
+> `[Answer]`
+
+**Q3 (Start with Failure)**: `[How many people have failed with this approach?]`
+
+> `[Answer]`
+
+**Q4 (Find the Expert)**: `[Who is the expert thinking deepest about this domain?]`
+
+> `[Answer]`
+
+**Q5 (Read Primary Sources)**: `[Have you read papers, RFCs, commit logs, Issues?]`
+
+> `[Answer]`
+
+**Q6 (Inversion)**: `[If this failed in the worst way, what would be the cause?]`
+
+> `[Answer]`
+
+**Q7 (So What)**: `[Now that you've named the concept, how does it change your design?]`
+
+> `[Answer]`
+
+---
+
+### Step 2: OSS Discovery (Phase B)
+
+**Candidates Investigated**:
+
+1. `[Candidate Name A]`
+   - License: `[SPDX identifier]` → Tier `[1/2/3/4]`
+   - Last Commit: `[YYYY-MM-DD]`
+   - Feature Fit: `[XX]`%
+   - Decision: `[Adoption reason / Rejection reason]`
+
+2. `[Candidate Name B]`
+   - License: `[SPDX identifier]` → Tier `[1/2/3/4]`
+   - Last Commit: `[YYYY-MM-DD]`
+   - Feature Fit: `[XX]`%
+   - Decision: `[Adoption reason / Rejection reason]`
+
+---
+
+### Step 3: Final Decision
+
+| Decision | Content |
+|----------|---------|
+| **Adoption Decision** | `[ ]` Adopt existing OSS  `[ ]` Self-implement  `[ ]` Hybrid (OSS + self-implementation) |
+| **OSS to Adopt** | `[Package Name]` version `[x.y.z]` or "None" |
+| **Self-Implementation Rationale** | `[Reason]` or "Existing OSS covers all requirements" |
+| **Remaining Risks** | `[Potential issues]` or "None" |
