@@ -78,13 +78,36 @@ Prior art investigation runs automatically at requirements and design phases.
 
 ---
 
+## Personalities (Kiro SDD)
+
+Switch investigation focus by selecting a personality:
+
+| Personality | Focus |
+|-------------|-------|
+| `researcher` | Academic papers, citations, prior research |
+| `startup-hunter` | Market validation, competitor analysis, startup trends |
+| `tech-auditor` | Technical depth, architecture, engineering best practices |
+| `patent-search` | IP risk, patent landscape, prior art claims |
+| `team-internal` | Internal knowledge, existing docs, in-house patterns |
+
+---
+
+## Customization
+
+Extend the framework by adding your own personalities, modes, or integration hooks.
+
+See `.kiro/personalities/` and `.kiro/hooks/` for examples.
+
+---
+
 ## Documentation
+
+Language-specific setup guides:
 
 | | English | 日本語 |
 |-|---------|--------|
-| Overview | [docs/en/README.md](docs/en/README.md) | [docs/ja/README.md](docs/ja/README.md) |
-| VS Code setup | [AGENT-SKILLS-SETUP.md](docs/en/AGENT-SKILLS-SETUP.md) | [AGENT-SKILLS-SETUP.md](docs/ja/AGENT-SKILLS-SETUP.md) |
-| Claude setup | [MCP-SETUP.md](docs/en/MCP-SETUP.md) | [MCP-SETUP.md](docs/ja/MCP-SETUP.md) |
+| VS Code setup | [docs/en/AGENT-SKILLS-SETUP.md](docs/en/AGENT-SKILLS-SETUP.md) | [docs/ja/AGENT-SKILLS-SETUP.md](docs/ja/AGENT-SKILLS-SETUP.md) |
+| Claude setup | [docs/en/MCP-SETUP.md](docs/en/MCP-SETUP.md) | [docs/ja/MCP-SETUP.md](docs/ja/MCP-SETUP.md) |
 
 ---
 
@@ -92,12 +115,8 @@ Prior art investigation runs automatically at requirements and design phases.
 
 MIT
 
-
 - **GitHub**: https://github.com/ma2tani/prior-art-investigation
-- **npm**: https://www.npmjs.com/package/@ma2tani/prior-art-investigation
 - **Release**: https://github.com/ma2tani/prior-art-investigation/releases/tag/v1.0.0
-
----
 
 ## 📝 License
 
