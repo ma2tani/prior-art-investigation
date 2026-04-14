@@ -1,34 +1,91 @@
 #!/usr/bin/env python3
 """
-Minimal MCP Server Implementation - No FastMCP dependency
+Prior Art Investigation MCP Server — No external dependencies
 
-Uses standard library + json-rpc for protocol compatibility.
-Can be tested locally and integrated into Claude Desktop.
+Embeds prompts inline (no file dependencies).
+Provides three tools: load_minimal, load_full, load_selector.
 """
 
 import json
 import sys
-from pathlib import Path
 from typing import Any, Dict
 
+# ── Inline prompts (zero file dependencies) ──────────────────────────────────
 
-# Get repo root
-REPO_ROOT = Path(__file__).parent.parent
-PROMPTS_DIR = REPO_ROOT / "docs" / "en" / "github" / "prompts"
+PROMPT_MINIMAL = """
+# Prior Art Investigation — Requirements Phase (MINIMAL / Q1+Q6)
 
+> Use when: you have a problem statement and want a quick concept check before design.
+> Time: 5-10 min | Tokens: ~150
 
-def load_prompt_file(filename: str) -> str:
-    """Load prompt file content, handle multiple languages."""
-    file_path = PROMPTS_DIR / filename
-    if not file_path.exists():
-        # Try Japanese version if English not found
-        file_path = REPO_ROOT / "docs" / "ja" / "github" / "prompts" / filename
-    
-    if not file_path.exists():
-        raise FileNotFoundError(f"Prompt file not found: {filename}")
-    
-    return file_path.read_text(encoding="utf-8")
+## Q1: First Principles
+- Is the problem statement correct?
+- Are we solving the right problem or a surface symptom?
+- Reframe in the simplest possible terms (remove jargon).
 
+## Q6: Inversion
+- If this fails spectacularly in 6 months, what causes it?
+- What core assumptions might be wrong?
+- What should we verify **before** proceeding?
+
+Answer both questions concisely for the given feature concept.
+""".strip()
+
+PROMPT_FULL = """
+# Prior Art Investigation — Design Phase (FULL / Q1-Q7)
+
+> Use when: you are designing an architecture or new subsystem.
+> Time: 20-40 min | Tokens: ~500
+
+## Q1: First Principles
+- Is the problem statement correct? Simplest reframing.
+
+## Q2: Concept Name
+- What is this technically called in the field?
+- What established patterns or paradigms apply?
+
+## Q3: Technical Options
+- What approaches / algorithms / architectures exist?
+
+## Q4: OSS Ecosystem
+- Which open-source projects solve this? List with pros/cons.
+
+## Q5: Architecture Choice
+- Which OSS or approach to build on and why?
+- Build vs. adopt trade-offs.
+
+## Q6: Inversion
+- What failure modes exist? What assumptions might be wrong?
+
+## Q7: Next Steps
+- Concrete, prioritized action items to move forward.
+
+Provide thorough investigation across all 7 questions.
+""".strip()
+
+PROMPT_SELECTOR = """
+# Prior Art Investigation — Selector (auto-route)
+
+> Detect the current development phase and route accordingly.
+> Time: 1-2 min | Tokens: ~100
+
+## Phase Detection
+
+Ask the user ONE question:
+"Are you in the **Requirements** phase (problem statement, before design) or the **Design** phase (architecture decisions, new subsystem)?"
+
+- **Requirements** → run MINIMAL (Q1+Q6, ~150 tokens, 5-10 min)
+- **Design** → run FULL (Q1-Q7, ~500 tokens, 20-40 min)
+- **Unsure** → default to MINIMAL first, offer FULL after
+
+Then proceed with the appropriate investigation.
+""".strip()
+
+PROMPTS = {
+    "load_minimal": PROMPT_MINIMAL,
+    "load_full": PROMPT_FULL,
+    "load_selector": PROMPT_SELECTOR,
+}
 
 def handle_request(request: Dict[str, Any]) -> Dict[str, Any]:
     """Process JSON-RPC request."""
@@ -64,12 +121,8 @@ def handle_request(request: Dict[str, Any]) -> Dict[str, Any]:
         elif method == "tools/call":
             tool_name = request.get("params", {}).get("name")
             
-            if tool_name == "load_minimal":
-                content = load_prompt_file("minimal.prompt.md")
-            elif tool_name == "load_full":
-                content = load_prompt_file("full.prompt.md")
-            elif tool_name == "load_selector":
-                content = load_prompt_file("selector.prompt.md")
+            if tool_name in PROMPTS:
+                content = PROMPTS[tool_name]
             else:
                 raise ValueError(f"Unknown tool: {tool_name}")
             
@@ -98,8 +151,7 @@ def handle_request(request: Dict[str, Any]) -> Dict[str, Any]:
 def main():
     """Start MCP server (stdio protocol)."""
     print("✅ Prior Art Investigation MCP Server started", file=sys.stderr)
-    print(f"📂 Prompts directory: {PROMPTS_DIR}", file=sys.stderr)
-    print("🔧 Tools available: load_minimal, load_full, load_selector", file=sys.stderr)
+    print("🔧 Tools: load_minimal, load_full, load_selector", file=sys.stderr)
     
     # Read JSON-RPC requests from stdin
     while True:

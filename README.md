@@ -1,83 +1,97 @@
 # Prior Art Investigation Framework
 
-Quickly identify named concepts, established patterns, and OSS options **before** building.
+> Before writing code, identify what your concept is called, what patterns exist, and which OSS already solves it.
 
-**Language / 言語:**
-- **[English](docs/en/README.md)** — Quick start for global dev teams
-- **[日本語](docs/ja/README.md)** — 日本人向けガイド
+**[English](docs/en/README.md)** | **[日本語](docs/ja/README.md)**
 
 ---
 
-## 🎯 What This Does
+## What It Does
 
-| Scenario | Time | Tokens | Output |
-|----------|------|--------|--------|
-| **Requirements phase**: Quick concept check | 5-10 min | ~150 | Confirmed concept name + risks |
-| **Design phase**: Deep architecture research | 20-40 min | ~500 | OSS options + architecture tradeoffs |
-| **Unsure**: Auto-detect phase | 1-2 min | ~100 | Routes to MINIMAL or FULL |
+Prompts an AI agent to investigate your feature concept through structured questions:
 
-> *Avoid reinventing the wheel. Before coding, identify what it's called and who already built it.*
+| Mode | Use When | Time | Tokens |
+|------|----------|------|--------|
+| **minimal** | Requirements phase — quick concept check | 5-10 min | ~150 |
+| **full** | Design phase — deep architecture research | 20-40 min | ~500 |
+| **selector** | Not sure which phase | 1-2 min | auto-routes |
 
 ---
 
-## 🚀 Get Started (Choose Your Path)
+## 3 Ways to Use
 
-### Path 1: VS Code Copilot (Fastest — 0 minutes)
-```
-@prior-art-investigation minimal
-I need real-time search for music grooves
-```
+### 1. VS Code Copilot — 0 min setup
 
-### Path 2: Claude Desktop (5 minutes)
+Copy `.instructions.md` to your Agent Skills folder:
+
 ```bash
-# Add to ~/.../Claude/claude_desktop_config.json
-"mcpServers": {
-  "prior-art-investigation": {
-    "command": "python3",
-    "args": ["/path/to/mcp/server_lite.py"]
+# macOS
+cp .instructions.md \
+  ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art-investigation.md
+
+# Linux
+cp .instructions.md \
+  ~/.config/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art-investigation.md
+```
+
+Then use in Copilot Chat:
+
+```
+@prior-art-investigation minimal I need a real-time caching layer for our API
+```
+
+→ [Full setup guide](docs/en/AGENT-SKILLS-SETUP.md)
+
+---
+
+### 2. Claude Desktop (MCP) — 5 min setup
+
+Add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "prior-art-investigation": {
+      "command": "python3",
+      "args": ["/path/to/prior-art-investigation/mcp/server_lite.py"]
+    }
   }
 }
-
-# Restart Claude → 3 tools available
-@prior-art-investigation [minimal|full|selector]
 ```
 
-### Path 3: npm Package (Programmatic)
+Restart Claude Desktop → 3 tools available: `load_minimal`, `load_full`, `load_selector`.
+
+→ [Full setup guide](docs/en/MCP-SETUP.md)
+
+---
+
+### 3. Kiro SDD — hooks & personalities
+
+Copy directly into your project:
+
 ```bash
-npm install @ma2tani/prior-art-investigation
-
-import minimalPrompt from '@ma2tani/prior-art-investigation/prompts/minimal';
+cp -r .kiro/hooks /your-project/.kiro/
+cp -r .kiro/personalities /your-project/.kiro/
 ```
 
----
-
-## ✨ Key Features (v1.0.0)
-
-- ✅ **Phase-split prompts** — MINIMAL (Q1+Q6) / FULL (Q1-Q7) / SELECTOR
-- ✅ **70% token reduction** — MINIMAL: 150 tokens vs FULL: 500 tokens
-- ✅ **3 distribution channels** — Agent Skills / MCP Server / npm
-- ✅ **Bilingual** — English + 日本語
-- ✅ **Kiro SDD compatible** — Saves to `.kiro/specs/`
-- ✅ **Zero dependencies** — MCP server uses stdlib only
+Prior art investigation runs automatically at requirements and design phases.
 
 ---
 
-## 📚 Documentation
+## Documentation
 
-**Quick Links:**
-- [NAVIGATION.md](docs/en/NAVIGATION.md) — Discovery hub (start here!)
-- [AGENT-SKILLS-USAGE.md](docs/en/AGENT-SKILLS-USAGE.md) — VS Code guide
-- [CLAUDE-DESKTOP-SETUP.md](docs/en/CLAUDE-DESKTOP-SETUP.md) — MCP setup
-- [CHANGELOG.md](CHANGELOG.md) — What's new in v1.0.0
-- [RELEASE.md](RELEASE.md) — Release notes
-
-**By Language:**
-- [English docs](docs/en/README.md)
-- [日本語ドキュメント](docs/ja/README.md)
+| | English | 日本語 |
+|-|---------|--------|
+| Overview | [docs/en/README.md](docs/en/README.md) | [docs/ja/README.md](docs/ja/README.md) |
+| VS Code setup | [AGENT-SKILLS-SETUP.md](docs/en/AGENT-SKILLS-SETUP.md) | [AGENT-SKILLS-SETUP.md](docs/ja/AGENT-SKILLS-SETUP.md) |
+| Claude setup | [MCP-SETUP.md](docs/en/MCP-SETUP.md) | [MCP-SETUP.md](docs/ja/MCP-SETUP.md) |
 
 ---
 
-## 🔗 Links
+## License
+
+MIT
+
 
 - **GitHub**: https://github.com/ma2tani/prior-art-investigation
 - **npm**: https://www.npmjs.com/package/@ma2tani/prior-art-investigation
