@@ -18,6 +18,10 @@ PROMPT_MINIMAL = """
 > Use when: you have a problem statement and want a quick concept check before design.
 > Time: 5-10 min | Tokens: ~150
 
+**Source linking rule**: For every concept, pattern, or risk you mention,
+include the source as a Markdown link (arXiv, GitHub, docs, etc.).
+Do not state facts without a link.
+
 ## Q1: First Principles
 - Is the problem statement correct?
 - Are we solving the right problem or a surface symptom?
@@ -36,6 +40,11 @@ PROMPT_FULL = """
 
 > Use when: you are designing an architecture or new subsystem.
 > Time: 20-40 min | Tokens: ~500
+
+**Source linking rule (applies to every question below)**:
+For every claim, concept, OSS project, paper, or failure pattern you mention,
+include the source as a Markdown link — arXiv URL, GitHub repo, official docs, or
+reliable reference. Do not state facts without a link.
 
 ## Q1: First Principles
 - Is the problem statement correct? Simplest reframing.
