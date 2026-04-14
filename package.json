@@ -1,0 +1,52 @@
+{
+  "name": "@ma2tani/prior-art-investigation",
+  "version": "1.0.0",
+  "description": "Prior Art Investigation Framework - identify named concepts and OSS before writing code",
+  "license": "MIT",
+  "author": "ma2tani",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ma2tani/prior-art-investigation.git"
+  },
+  "homepage": "https://github.com/ma2tani/prior-art-investigation",
+  "bugs": {
+    "url": "https://github.com/ma2tani/prior-art-investigation/issues"
+  },
+  "keywords": [
+    "oss-evaluation",
+    "prior-art",
+    "spec-driven-development",
+    "kiro-sdd",
+    "architecture-decision",
+    "requirements",
+    "design"
+  ],
+  "files": [
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./package.json",
+    "./docs/en": "./docs/en",
+    "./docs/ja": "./docs/ja",
+    "./docs/en/templates": "./docs/en/templates",
+    "./docs/ja/templates": "./docs/ja/templates",
+    "./docs/en/github/prompts": "./docs/en/github/prompts",
+    "./docs/ja/github/prompts": "./docs/ja/github/prompts",
+    "./docs/en/kiro/settings": "./docs/en/kiro/settings",
+    "./docs/ja/kiro/settings": "./docs/ja/kiro/settings"
+  },
+  "scripts": {
+    "setup:kiro-en": "cp -r docs/en docs/ja docs/en/kiro/settings/rules/oss-evaluation.md .kiro/settings/rules/ && cp docs/en/templates/research.md .kiro/settings/templates/specs/",
+    "setup:kiro-ja": "cp -r docs/ja/kiro/settings/rules/oss-evaluation.md .kiro/settings/rules/ && cp docs/ja/templates/research.md .kiro/settings/templates/specs/",
+    "test": "echo 'No tests yet' && exit 0",
+    "lint": "echo 'No linting configured yet' && exit 0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
