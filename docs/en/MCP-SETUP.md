@@ -17,7 +17,7 @@ Configure the Prior Art Investigation Framework as a Model Context Protocol (MCP
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/ma2tani/prior-art-investigation.git
+git clone https://github.com/as-we/prior-art-investigation.git
 cd prior-art-investigation
 ```
 

@@ -17,7 +17,7 @@ Prior Art Investigation Framework を Claude Desktop の Model Context Protocol 
 ### ステップ 1: リポジトリをクローン
 
 ```bash
-git clone https://github.com/ma2tani/prior-art-investigation.git
+git clone https://github.com/as-we/prior-art-investigation.git
 cd prior-art-investigation
 ```
 

@@ -115,8 +115,8 @@ Language-specific setup guides:
 
 MIT
 
-- **GitHub**: https://github.com/ma2tani/prior-art-investigation
-- **Release**: https://github.com/ma2tani/prior-art-investigation/releases/tag/v1.0.0
+- **GitHub**: https://github.com/as-we/prior-art-investigation
+- **Release**: https://github.com/as-we/prior-art-investigation/releases/tag/v1.0.0
 
 ## 📝 License
 
