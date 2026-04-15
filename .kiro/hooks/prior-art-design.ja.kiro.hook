@@ -4,6 +4,6 @@
   "when": { "type": "agentStop" },
   "then": {
     "type": "askAgent",
-    "prompt": "このフックファイルで enabled が false の場合はスキップ。そうでなければ git diff --name-only HEAD で .kiro/specs/*/design.md が変更されたか確認。変更ありなら FULL 調査（Q1-Q7全体）を実行。なければ『設計変更が検出されません - 先行技術調査をスキップします』と出力して終了。"
+    "prompt": "git diff --name-only HEAD で .kiro/specs/*/design.md が変更されたか確認。変更ありなら FULL 調査（Q1-Q7全体）を実行。なければ『設計変更が検出されません - 先行技術調査をスキップします』と出力して終了。（フックファイルで enabled が false の場合は無効版プロンプトに置き換えてスキップ）"
   }
 }

@@ -4,6 +4,6 @@
   "when": { "type": "agentStop" },
   "then": {
     "type": "askAgent",
-    "prompt": "Check if enabled is false in this hook file - if so, skip. Otherwise, use git diff --name-only HEAD to check if .kiro/specs/*/design.md was modified. If yes, run FULL investigation (Q1-Q7) for comprehensive prior art analysis. If not modified, output 'No design changes detected - skipping prior art investigation.' and stop."
+    "prompt": "Use git diff --name-only HEAD to check if .kiro/specs/*/design.md was modified. If yes, run FULL investigation (Q1-Q7) for comprehensive prior art analysis. If not modified, output 'No design changes detected - skipping prior art investigation.' and stop. (If enabled is false in the hook file, replace this prompt with the disabled version and skip.)"
   }
 }

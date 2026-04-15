@@ -147,6 +147,9 @@ cp .kiro/hooks/*.kiro.hook /your-project/.kiro/hooks/
 # Disable requirements hook only
 # Edit .kiro/hooks/prior-art-requirements.kiro.hook:
 # Change "enabled": true to "enabled": false
+# 
+# The hook name will automatically change to show [DISABLED] status,
+# and a lightweight skipping prompt will be used instead
 
 # Disable design hook only  
 # Edit .kiro/hooks/prior-art-design.kiro.hook:
