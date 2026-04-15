@@ -1,0 +1,8 @@
+{
+  "name": "Prior Art Investigation - Requirements",
+  "when": { "type": "agentStop" },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Use git diff --name-only HEAD to check if .kiro/specs/*/requirements.md was modified. If yes, run MINIMAL investigation (Q1+Q6 only) for prior art discovery. If not modified, output 'No requirements changes detected - skipping prior art investigation.' and stop."
+  }
+}

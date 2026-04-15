@@ -1,0 +1,8 @@
+{
+  "name": "Prior Art Investigation - Design",
+  "when": { "type": "agentStop" },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Use git diff --name-only HEAD to check if .kiro/specs/*/design.md was modified. If yes, run FULL investigation (Q1-Q7) for comprehensive prior art analysis. If not modified, output 'No design changes detected - skipping prior art investigation.' and stop."
+  }
+}

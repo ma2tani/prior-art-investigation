@@ -133,6 +133,32 @@ cp -r .kiro/personalities /your-project/.kiro/
 
 要件定義・設計フェーズで先行技術調査が自動的に実行される。
 
+#### VS Code Copilot Chat: フック形式と無効化
+
+`.kiro/hooks/` ディレクトリには **Kiro IDE** 形式（`enabled` フラグ付き JSON）と **VS Code** 形式（`agentStop` トリガー付き `.kiro.hook`）の両方が含まれてます。
+
+**VS Code セットアップ**（`.json` ではなく `.kiro.hook` をコピー）:
+```bash
+cp .kiro/hooks/*.kiro.hook /your-project/.kiro/hooks/
+```
+
+**VS Code で無効化**（ファイルリネーム方式）:
+```bash
+# 要件フックのみ無効化
+mv .kiro/hooks/prior-art-requirements.kiro.hook \
+   .kiro/hooks/prior-art-requirements.kiro.hook.disabled
+
+# 設計フックのみ無効化
+mv .kiro/hooks/prior-art-design.kiro.hook \
+   .kiro/hooks/prior-art-design.kiro.hook.disabled
+
+# 再度有効化
+mv .kiro/hooks/prior-art-requirements.kiro.hook.disabled \
+   .kiro/hooks/prior-art-requirements.kiro.hook
+```
+
+**注意**: VS Code フックは `agentStop` トリガー + git diff 検知（`requirements.md` または `design.md` が変更されたか確認）を使用します。Kiro IDE フックはコマンド固有トリガー（`after_kiro_spec_requirements`、`after_kiro_spec_design`）を使用します。
+
 ---
 
 ## オプション：フック実行の制御

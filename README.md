@@ -133,6 +133,32 @@ cp -r .kiro/personalities /your-project/.kiro/
 
 Prior art investigation runs automatically at requirements and design phases.
 
+#### VS Code Copilot Chat: Hook Format & Disabling
+
+The `.kiro/hooks/` directory includes both **Kiro IDE** format (`.json` with `enabled` flag) and **VS Code** format (`.kiro.hook` with `agentStop` trigger).
+
+**VS Code setup** (copy `.kiro.hook` files, not `.json`):
+```bash
+cp .kiro/hooks/*.kiro.hook /your-project/.kiro/hooks/
+```
+
+**To disable in VS Code** (file rename):
+```bash
+# Disable requirements hook only
+mv .kiro/hooks/prior-art-requirements.kiro.hook \
+   .kiro/hooks/prior-art-requirements.kiro.hook.disabled
+
+# Disable design hook only  
+mv .kiro/hooks/prior-art-design.kiro.hook \
+   .kiro/hooks/prior-art-design.kiro.hook.disabled
+
+# Re-enable
+mv .kiro/hooks/prior-art-requirements.kiro.hook.disabled \
+   .kiro/hooks/prior-art-requirements.kiro.hook
+```
+
+**Note**: VS Code hooks use `agentStop` trigger + git diff detection (checks if `requirements.md` or `design.md` changed). Kiro IDE hooks use command-specific triggers (`after_kiro_spec_requirements`, `after_kiro_spec_design`).
+
 ---
 
 ## Optional: Control Hook Execution
