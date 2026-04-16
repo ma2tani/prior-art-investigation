@@ -289,4 +289,4 @@ Add a JSON file to `.kiro/personalities/`:
 
 ---
 
-**Version**: 1.0.0 | **License**: MIT
+**Version**: 1.1.0 | **License**: MIT

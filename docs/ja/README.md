@@ -323,4 +323,4 @@ rm ~/.copilot/hooks/scripts/prior-art-detect.sh
 MIT
 
 - **GitHub**: https://github.com/as-we/prior-art-investigation
-- **Release**: https://github.com/as-we/prior-art-investigation/releases/tag/v1.0.0
+- **Release**: https://github.com/as-we/prior-art-investigation/releases/tag/v1.1.0
