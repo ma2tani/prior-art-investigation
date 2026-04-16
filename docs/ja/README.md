@@ -124,7 +124,7 @@ Copilot Chat で使う：
 @prior-art-investigation minimal リアルタイム検索機能を設計したい
 ```
 
-→ [詳細セットアップ](./AGENT-SKILLS-SETUP.md)
+→ [詳細セットアップ](./SETUP.md)
 
 ---
 
@@ -164,7 +164,7 @@ Copilot Chat から呼び出す：
 **対応ツール**: VS Code Copilot Chat, Kiro IDE, Cursor, Windsurf  
 **トークン消費**: 明示的に呼んだときだけ
 
-→ [詳細セットアップ](./AGENT-SKILLS-SETUP.md)
+→ [詳細セットアップ](./SETUP.md)
 
 ---
 
@@ -207,7 +207,7 @@ VS Code 設定でユーザースコープフックを有効化：
 
 Claude Desktop を再起動 → ツール `load_minimal` / `load_full` / `load_selector` が使用可能。
 
-→ [詳細セットアップ](./MCP-SETUP.md)
+→ [詳細セットアップ](./SETUP.md)
 
 ---
 
@@ -280,7 +280,9 @@ rm ~/.copilot/hooks/scripts/prior-art-detect.sh
 `minimal` は Q1（第一原理）+ Q6（反転リスク）のみ使用。  
 `full` は Q1〜Q8 の全質問を使用。Q8 はプラットフォームネイティブ機能の調査（IDE・SDK・ランタイムが既に持つ機能の確認）。
 
-質問の内容は `.instructions.md` または `.instructions.ja.md` を直接編集して変更できる。
+質問の内容は `.instructions.md` を直接編集して変更できる（`.instructions.ja.md` は非推奨）。
+
+→ [Q1-Q8 詳細解説](./QUESTIONS.md)
 
 ### パーソナリティのカスタマイズ
 
