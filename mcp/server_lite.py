@@ -45,6 +45,7 @@ PROMPT_FULL = """
 For every claim, concept, OSS project, paper, or failure pattern you mention,
 include the source as a Markdown link — arXiv URL, GitHub repo, official docs, or
 reliable reference. Do not state facts without a link.
+Accepted source types: arXiv / GitHub / official product docs (docs.github.com, code.visualstudio.com, etc.) / Changelog & Release Notes / academic papers (DOI).
 
 ## Q1: First Principles
 - Is the problem statement correct? Simplest reframing.
@@ -79,7 +80,20 @@ Note: include additional domain-specific columns if relevant (e.g., cloud cost, 
 ## Q7: Next Steps
 - Concrete, prioritized action items to move forward.
 
-Provide thorough investigation across all 7 questions.
+## Q8: Platform Native Capabilities
+- Does the target platform (VS Code, GitHub, Azure, AWS, etc.) already provide a native feature that solves this problem?
+- Check: official docs, recent Changelog / Release Notes (last 6 months), GitHub Releases of libraries in use.
+- List features that would be re-invented unnecessarily if we build custom.
+- Source: always link to official documentation (not arXiv — product docs are the authority here).
+
+---
+
+⚠️ **Training Cutoff Notice**: This investigation reflects LLM training data. Manually verify:
+- [ ] Target platform Changelog (last 6 months)
+- [ ] Official docs latest version
+- [ ] GitHub Releases of key dependencies
+
+Provide thorough investigation across all 8 questions.
 """.strip()
 
 PROMPT_SELECTOR = """

@@ -159,7 +159,23 @@ cp .kiro/hooks/*.kiro.hook /your-project/.kiro/hooks/
 # Change "enabled": false back to "enabled": true
 ```
 
+> **Note on `enabled` field**: The `enabled` key is not part of the official VS Code `.kiro.hook` schema. It is interpreted by the agent prompt inside the hook (not by VS Code itself). The hook always fires on `agentStop`; the agent reads the flag and decides whether to skip.
+
 **Note**: VS Code hooks use `agentStop` trigger + git diff detection (checks if `requirements.md` or `design.md` changed). Kiro IDE hooks use command-specific triggers (`after_kiro_spec_requirements`, `after_kiro_spec_design`).
+
+#### GitHub Copilot Cloud Agent (Browser) — Different Schema
+
+**VS Code** and **GitHub Copilot Cloud Agent** (copilot.github.com) use `.github/hooks/` but with incompatible schemas:
+
+| Item | VS Code | GitHub Cloud Agent |
+|------|---------|--------------------|
+| `version` | Not required | `1` required |
+| Event name case | PascalCase (`UserPromptSubmit`) | camelCase (`userPromptSubmitted`) |
+| Script keys | `command` / `osx` / `linux` | `bash` / `powershell` |
+| Timeout key | `timeout` | `timeoutSec` |
+| `agentStop` | `"Stop"` | `"sessionEnd"` |
+
+This framework's `.kiro.hook` files target **VS Code Copilot Chat**. Cloud Agent users need a separate hook file with the Cloud Agent schema. See [VS Code hooks docs](https://code.visualstudio.com/docs/copilot/copilot-extensibility-overview) and [GitHub Cloud Agent hooks docs](https://docs.github.com/en/copilot/reference/hooks-configuration).
 
 ---
 
