@@ -2,6 +2,8 @@
 
 Prior Art Investigation Framework のインストール方法を、使いたいツールに応じて選んでください。
 
+**ジャンプ**: [VS Code Agent Skills](#a-vs-code-copilot-chat--agent-skills) | [自動検知フック](#b-自動検知フックvs-code--userpromptsubmit) | [Claude Desktop](#c-claude-desktopmcpサーバー) | [Kiro IDE](#d-kiro-ide--フックパーソナリティ) | [VS Code カスタムエージェント](#e-vs-codeカスタムエージェントプロジェクト単位)
+
 ---
 
 ## クイックスタート（推奨）
