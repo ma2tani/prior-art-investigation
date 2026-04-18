@@ -29,16 +29,16 @@ Or manually:
 ```bash
 # macOS
 cp .instructions.md \
-  ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art-investigation.md
+  ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art.md
 
 # Linux
 cp .instructions.md \
-  ~/.config/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art-investigation.md
+  ~/.config/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art.md
 
 # Windows (PowerShell)
 $dir = "$env:APPDATA\Code\User\globalStorage\github.copilot-chat\agent-skills"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
-Copy-Item ".instructions.md" "$dir\prior-art-investigation.md"
+Copy-Item ".instructions.md" "$dir\prior-art.md"
 ```
 
 Restart VS Code to apply.
@@ -46,15 +46,15 @@ Restart VS Code to apply.
 ### Usage
 
 ```
-@prior-art-investigation minimal  I need to implement an API rate limiter
-@prior-art-investigation full     I want to design a distributed caching layer
-@prior-art-investigation selector ← auto-routes to minimal or full
+@prior-art minimal  I need to implement an API rate limiter
+@prior-art full     I want to design a distributed caching layer
+@prior-art selector ← auto-routes to minimal or full
 ```
 
 > **Why `.instructions.md` (English) is recommended**  
 > Agent Skills are sent directly as LLM prompts. English costs 20–30% fewer tokens for the same content, and GPT/Claude both produce more accurate research results from English prompts. If you need responses in Japanese, append `(respond in Japanese)` to your call:  
 > ```
-> @prior-art-investigation full knowledge distillation design (respond in Japanese)
+> @prior-art full knowledge distillation design (respond in Japanese)
 > ```
 
 ### Troubleshooting
@@ -108,7 +108,7 @@ Add to `~/.claude/claude_desktop_config.json` (Windows: `%APPDATA%\Claude\claude
 ```json
 {
   "mcpServers": {
-    "prior-art-investigation": {
+    "prior-art": {
       "command": "python3",
       "args": ["/path/to/prior-art-investigation/mcp/server_lite.py"]
     }

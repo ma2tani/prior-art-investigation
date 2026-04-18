@@ -29,16 +29,16 @@ make install-skills
 ```bash
 # macOS
 cp .instructions.md \
-  ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art-investigation.md
+  ~/Library/Application\ Support/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art.md
 
 # Linux
 cp .instructions.md \
-  ~/.config/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art-investigation.md
+  ~/.config/Code/User/globalStorage/github.copilot-chat/agent-skills/prior-art.md
 
 # Windows (PowerShell)
 $dir = "$env:APPDATA\Code\User\globalStorage\github.copilot-chat\agent-skills"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
-Copy-Item ".instructions.md" "$dir\prior-art-investigation.md"
+Copy-Item ".instructions.md" "$dir\prior-art.md"
 ```
 
 VS Code を再起動して反映。
@@ -46,15 +46,15 @@ VS Code を再起動して反映。
 ### 使い方
 
 ```
-@prior-art-investigation minimal  API のレート制限を実装したい
-@prior-art-investigation full     分散キャッシュのアーキテクチャを設計したい
-@prior-art-investigation selector ← どちらか迷ったとき、自動振り分け
+@prior-art minimal  API のレート制限を実装したい
+@prior-art full     分散キャッシュのアーキテクチャを設計したい
+@prior-art selector ← どちらか迷ったとき、自動振り分け
 ```
 
 > **なぜ `.instructions.md`（英語版）を使うのか**  
 > Agent Skills はそのままLLMへのプロンプトとして送信されます。英語の方がトークン数が少なく（同内容で約20〜30%削減）、GPT/Claude いずれも英語プロンプトの方が調査精度が高いため、英語版を推奨します。日本語での回答が必要な場合は、呼び出し時に「日本語で回答して」と付け加えるか、以下のように使います。  
 > ```
-> @prior-art-investigation full LLMを使った知識蒸留の設計 (回答は日本語で)
+> @prior-art full LLMを使った知識蒸留の設計 (回答は日本語で)
 > ```
 
 ### トラブルシューティング
@@ -108,7 +108,7 @@ rm ~/.copilot/hooks/scripts/prior-art-detect.sh
 ```json
 {
   "mcpServers": {
-    "prior-art-investigation": {
+    "prior-art": {
       "command": "python3",
       "args": ["/path/to/prior-art-investigation/mcp/server_lite.py"]
     }

@@ -30,7 +30,7 @@ out = {
     'hookEventName': 'UserPromptSubmit',
     'additionalContext': (
       '💡 Prior art check recommended: this looks like a design or implementation decision. '
-      'Before building, consider running: @prior-art-investigation full <your topic>  '
+      'Before building, consider running: @prior-art full <your topic>  '
       '(checks concept names, OSS options, platform-native features, failure modes)'
     )
   }
