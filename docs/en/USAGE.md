@@ -102,7 +102,7 @@ Type in Copilot Chat as a slash command. **Add `#web` to fetch live OSS data bey
 /prior-art selector #web ← auto-routes to MINIMAL or FULL
 ```
 
-`#web` activates Bing search — Copilot fetches GitHub Releases, official changelogs, and recent activity in real time. Works even when no spec files have changed — just describe the topic.
+`#web` activates web search — Copilot fetches GitHub Releases, official changelogs, and recent activity in real time. Works even when no spec files have changed — just describe the topic.
 
 **When to use manually**:
 - Investigation independent of SDD phase timing
