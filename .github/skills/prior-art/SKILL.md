@@ -85,7 +85,21 @@ Every output must include:
 - ✅ Risk map (assumptions → potential failures)
 - ✅ If web search was NOT used: flag any OSS/platform items that may have changed in the past 12 months and recommend the user verify with `#web`
 
-## Integration with Kiro SDD
+## Integration with SDD Workflows
+
+### GitHub SpecKit (VS Code Copilot)
+
+Run manually before each SpecKit phase — no automatic hooks:
+
+```
+# Before speckit.specify (requirements phase)
+/prior-art minimal #web <feature topic>
+
+# Before speckit.plan (design phase)
+/prior-art full #web <feature topic>
+```
+
+### Kiro SDD
 
 ```bash
 # Phase 1 (Requirements)

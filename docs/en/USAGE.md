@@ -38,7 +38,17 @@ When your prompt contains keywords like "design", "architecture", "implement", e
 
 ### Auto 2 — SDD phase integration (opt-in)
 
-To trigger **actual investigation** at the end of cc-sdd sessions (`/kiro-spec-requirements`, `/kiro-spec-design`), enable the hooks in your project:
+**GitHub SpecKit (VS Code Copilot)**: no automatic hooks — run manually before each phase:
+
+```
+# Before speckit.specify (requirements phase)
+/prior-art minimal #web <feature topic>
+
+# Before speckit.plan (design phase)
+/prior-art full #web <feature topic>
+```
+
+**Kiro SDD (automatic)**: to trigger actual investigation at the end of Kiro SDD sessions, enable the hooks in your project:
 
 ```bash
 # Copy hooks to your project (first time only)

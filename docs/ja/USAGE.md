@@ -38,7 +38,17 @@
 
 ### 自動実行 2 — SDD フェーズ連動（opt-in）
 
-cc-sdd の `/kiro-spec-requirements` や `/kiro-spec-design` セッション終了後に**実際の調査を自動実行**させるには、プロジェクトの `.kiro/hooks/` ファイルを有効化します。
+**GitHub SpecKit（VS Code Copilot）の場合**: フックによる自動実行はなく、各フェーズ前に手動で実行します：
+
+```
+# speckit.specify 前（要件フェーズ）
+/prior-art minimal #web <機能トピック>
+
+# speckit.plan 前（設計フェーズ）
+/prior-art full #web <機能トピック>
+```
+
+**Kiro SDD（自動連動）の場合**: Kiro SDD のセッション終了後に**実際の調査を自動実行**させるには、`.kiro/hooks/` ファイルを有効化します：
 
 ```bash
 # プロジェクトの .kiro/hooks/ をコピー（初回のみ）
