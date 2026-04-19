@@ -43,13 +43,24 @@ Copilot Chat にスラッシュコマンドで入力：
 ```
 /prior-art minimal  API のレート制限を実装したい
 /prior-art full     分散キャッシュのアーキテクチャを設計したい
-/prior-art selector ← どちらか过ったとき、自動振り分け
+/prior-art selector ← どちらか迷ったとき、自動振り分け
 ```
 
 > 日本語で回答が必要な場合は以下のように入力：  
 > ```
 > /prior-art full LLMを使った知識蒸留の設計 (回答は日本語で)
 > ```
+
+### GitHub SpecKit との連携
+
+SpecKit ワークフローでは、各フェーズの**前**に手動で実行します：
+
+| SpecKit フェーズ | 実行するコマンド | モード |
+|----------------|----------------|--------|
+| `speckit.specify` の前（要件定義） | `/prior-art minimal #web <トピック>` | MINIMAL（Q1+Q6） |
+| `speckit.plan` の前（設計） | `/prior-art full #web <トピック>` | FULL（Q1–Q8） |
+
+`#web` を付けると最新の OSS リリース状況をライブ取得できます。自動フックはないため、フェーズを開始する前に手動で呼び出してください。
 
 ### トラブルシューティング
 
